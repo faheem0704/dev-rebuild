@@ -6,15 +6,26 @@ Started: 2026-10-27, the day after the interview. This is day one.
 | Week | Gate | Date passed | Notes |
 |---|---|---|---|
 | 0 | Setup: venv, pytest, Git, GitHub push | 2026-10-28 | Repo `dev-rebuild` pushed to GitHub ✅ |
-| 1 | week01 tests green + Guessing Game & Calculator + from-memory rewrites | | ex01 ✅ 15/15 (2026-10-31) · ex02 ⬜ · ex03 ⬜ · project ⬜ · rewrites ⬜ |
+| 1 | week01 tests green + Guessing Game & Calculator + from-memory rewrites | | ex01 ✅ 15/15 · ex02 🟨 5/7 functions (16 tests green) · ex03 ⬜ · project ⬜ · rewrites ⬜ · EXPLAIN IT ⬜ |
 | 2 | week02 tests green + Expense Tracker + 4 interview Qs scored ≥ 4/5 | | |
 
+## Videos watched
+- [x] CS50P Lecture 0: Functions, Variables
+- [x] CS50P Lecture 1: Conditionals (2026-10-31)
+- [x] CS50P Lecture 2: Loops (2026-11-01)
+- [ ] CS50P Lecture 3: Exceptions (Week 2)
+
 ## Weak spots (things to re-review; Claude adds these after quizzes)
-- **`round()` vs f-string**: mixed them up twice (circle_area, then the first discount attempt). Rule: number for calculating → `round(x, 2)`; text for display → `f"{x:.2f}"`.
-- **Checking with only one example**: two formulas passed with the number 100 by luck. Check with 2–3 awkward numbers (37, 250) by hand.
+- **`round()` vs f-string**: mixed them up twice. Number for calculating → `round(x, 2)`; text for display → `f"{x:.2f}"`.
+- **Checking with only one example**: two formulas passed with 100 by luck. Check with 2–3 awkward numbers by hand.
 - **`print` vs `return`**: return hands the value back; print only shows it.
-- **Reading a one-line `if/else`**: swapped the two results in `to_number`. Read it aloud as a sentence.
-- **EXPLAIN IT questions in ex01**: not answered yet.
+- **Loop boundaries (off-by-one)**: `range(start, stop)` EXCLUDES stop. Check the first and last value of every loop.
+- **`or` with strings**: `x == 'a' or 'e'` is always True. Use `x in "ae"`.
+- **The two meanings of `in`**: `for x in items:` loops; `x in items` asks True/False.
+- **Running the tests yourself before asking for review**: several reviews were for code with a SyntaxError.
+- **Trailing whitespace / 2 blank lines between functions**: flagged in 4 reviews. Turn on VS Code "trim trailing whitespace".
+- **Committing**: only 2 commits so far. Commit every time something turns green.
+- **EXPLAIN IT questions in ex01 and ex02**: not answered yet.
 
 ## Mistake journal (every bug you hit = one line. This becomes gold before interviews)
 | Date | What went wrong | Why | Lesson |
@@ -27,22 +38,38 @@ Started: 2026-10-27, the day after the interview. This is day one.
 | 2026-10-31 | Discount formula right only for price 100 | Tested with one easy example (100 hides mistakes) | Check formulas with awkward numbers |
 | 2026-10-31 | `IndentationError: unexpected indent` | `return` indented further than its block | Indentation is part of Python's meaning |
 | 2026-10-31 | `to_number("42")` returned `42.0` | int/float swapped in the `if/else` | Read the condition out loud; trace one input |
+| 2026-10-31 | grade: `'invalid' == 'Invalid'` failed | Strings are case-sensitive | Copy the spec's exact text; read the `^` marker in the error |
+| 2026-10-31 | sum_of_digits froze (infinite loop) on `-56` | `//` rounds down, so `-1 // 10` stays `-1` | Check every `while` loop ends for negatives/zero; Ctrl+C stops a frozen program |
+| 2026-10-31 | Named a variable `sum` | Hides the built-in `sum()` function | Never name variables `sum`, `list`, `str`, `max`, `input`, `type` |
+| 2026-10-31 | `results[]` → SyntaxError | Forgot `=` to assign | Create a variable with `name = value`; colons only open blocks |
+| 2026-10-31 | fizzbuzz started at 0 / missed n | `range(n)` starts at 0; `range(1, n)` stops before n | Off-by-one: `range(1, n + 1)` for 1..n |
+| 2026-10-31 | fizzbuzz returned after 1 item | `return` indented inside the loop | `return` goes AFTER the loop, at the `for`'s level |
+| 2026-10-31 | fizzbuzz appended `1` not `'1'`, `"buzz"` not `"Buzz"` | int vs str; case-sensitivity | `str()` turns numbers into text; match the spec exactly |
+| 2026-10-31 | Typed `1 % 5` instead of `i % 5` | The digit 1 looks like the letter i | Silent bugs: code runs but is wrong; tests catch them |
+| 2026-10-31 | `letter == 'a' or 'e'` counted every letter | Each side of `or` is separate; `'e'` alone is truthy | Repeat the full comparison, or use `letter in "aeiou"` |
+| 2026-10-31 | `for "aeiou" in text:` → SyntaxError | Mixed the two meanings of `in` | `for x in items:` loops; `x in items` asks True/False |
 
 ## Concepts learned so far
 - `/` vs `//` vs `%`, `**`, operator precedence
 - `import math`, `math.pi`, `round(x, 2)`
-- f-strings: `{x:.2f}` (2 decimals), `{x:02d}` (pad to 2 digits)
+- f-strings: `{x:.2f}`, `{x:02d}`, and calculations inside `{}` like `{n * i}`
 - `divmod()` returns a **tuple** (ordered), not a set → indexing `[0]` / unpacking `a, b = ...`
 - percent = per hundred → `discount_percent / 100 * price`
-- default parameters (`currency="AED"`)
+- default parameters (`currency="AED"`, `upto=10`)
 - one-line conditional: `a if condition else b`, and `max(x, 0)` as an alternative
-- `.strip()` returns a NEW string (strings are immutable); `"." in text` → `True`/`False`
-- `int()` vs `float()` conversion
+- `.strip()`, `.lower()` return NEW strings (strings are immutable)
+- `int()` vs `float()` vs `str()` conversion
+- `if / elif / else`, order of conditions (most specific first), `and` / `or`
+- **Guard clause** (reject bad input first) · **DRY** (Don't Repeat Yourself) · **refactoring** with tests as a safety net
+- `while` loops, making sure they end · `abs()` · `+=` / `//=`
+- `for` loops, `range(start, stop)` (stop excluded), off-by-one errors
+- build a list: `results = []` → `.append()` in the loop → `return` after the loop
+- the two meanings of `in`
+- first Big-O: digits loop = O(log n); looping over text = O(n)
 
 ## Daily log
 ### 2026-10-28 | Week 1 Day 1
 - **Built / committed:** Day 0 setup done: venv, pytest, Git, pushed to GitHub. Started `play.py` (input + f-string).
-- **Tomorrow:** make `play.py` actually calculate age + 10.
 
 ### 2026-10-29 | Week 1 Day 2
 - **Built:** `celsius_to_fahrenheit` ✅ (first green function!)
@@ -54,11 +81,18 @@ Started: 2026-10-27, the day after the interview. This is day one.
 
 ### 2026-10-31 | Week 1 Day 3 | hours: _
 - **Learned:** `//` and `%`, `divmod` + tuple unpacking, tuple vs set, percentages, default parameters, one-line conditionals, `.strip()`, `in`.
-- **Built:** `seconds_to_hms`, `price_after_discount`, `format_receipt_line`, `age_from_birth_year`, `to_number` → **ex01 complete, 15/15 green** 🎉
+- **Built:** ex01 complete, **15/15 green** 🎉 · committed.
 - **Watched:** CS50P Lecture 1: Conditionals ✅
 - **Confused me:** Job 2 of `to_number` (how to make Python decide between two options).
+
+### 2026-10-31 (later) | Week 1 Day 3–4 | hours: _
+- **Built (ex02):** `grade` ✅ (guard clause + refactor), `sum_of_digits` ✅ (fixed an infinite loop), `fizzbuzz` ✅ (7 bugs over 3 rounds), `multiplication_table` ✅ (green on the first run!), `count_vowels` ✅
+- **Learned:** if/elif ordering, guard clauses, DRY, while/for loops, `range`, off-by-one, list building, two meanings of `in`, `or` pitfall.
 - **Explained out loud:** _
-- **Tomorrow:** commit ex01 · answer ex01 EXPLAIN IT · start `ex02_conditions_loops.py` (`grade`, `is_prime`).
+
+### 2026-11-01 | Week 1 Day 4 | hours: _
+- **Watched:** CS50P Lecture 2: Loops ✅
+- **Next:** commit · fizzbuzz from memory · `guessing_game_result` · `is_prime` · EXPLAIN IT answers
 
 <!-- Copy this block each day -->
 ### YYYY-MM-DD | Week _ Day _ | hours: _

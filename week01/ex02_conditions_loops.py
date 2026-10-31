@@ -9,7 +9,16 @@ def grade(score):
     90-100 -> 'A', 80-89 -> 'B', 70-79 -> 'C', 0-69 -> 'F'
     Anything below 0 or above 100 -> 'Invalid'
     """
-    pass
+    if score > 100 or score < 0:
+        return "Invalid"
+    elif score >= 90:
+        return "A"
+    elif score >= 80:
+        return "B"
+    elif score >= 70:
+        return "C"
+    else:
+        return "F"
 
 
 def fizzbuzz(n):
@@ -18,8 +27,17 @@ def fizzbuzz(n):
 
     fizzbuzz(5) -> ['1', '2', 'Fizz', '4', 'Buzz']
     """
-    pass
-
+    results = []
+    for i in range(1, n + 1):
+        if i % 3 == 0 and i % 5 == 0:
+            results.append("FizzBuzz")
+        elif i % 3 == 0:
+            results.append("Fizz")
+        elif i % 5 == 0:
+            results.append("Buzz")    
+        else:
+            results.append(str(i))        
+    return results
 
 def is_prime(n):
     """True if n is a prime number, else False. Numbers below 2 are not prime.
@@ -33,7 +51,10 @@ def multiplication_table(n, upto=10):
 
     multiplication_table(7, 3) -> ['7 x 1 = 7', '7 x 2 = 14', '7 x 3 = 21']
     """
-    pass
+    answer = []
+    for i in range(1, upto + 1):
+        answer.append(f"{n} x {i} = {n*i}")
+    return answer    
 
 
 def sum_of_digits(n):
@@ -43,7 +64,13 @@ def sum_of_digits(n):
     sum_of_digits(1234) -> 10
     sum_of_digits(-56)  -> 11
     """
-    pass
+    total = 0
+    n = abs(n)
+    while n > 0:
+        total = total + n % 10
+        n //= 10
+
+    return total
 
 
 def count_vowels(text):
@@ -51,7 +78,12 @@ def count_vowels(text):
 
     count_vowels("Hello World") -> 3
     """
-    pass
+    count = 0
+    text = text.lower()
+    for letter in text:
+        if letter in "aeiou":
+            count += 1
+    return count        
 
 
 def guessing_game_result(secret, guesses, max_tries=3):

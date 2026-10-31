@@ -7,6 +7,7 @@ HOW TO WORK:
   3. Red = read the error message carefully. Green = move on.
   4. No AI-written code. Stuck for 20 min? Ask Claude for a HINT.
 """
+import math
 
 
 def celsius_to_fahrenheit(celsius):
@@ -15,7 +16,8 @@ def celsius_to_fahrenheit(celsius):
     celsius_to_fahrenheit(100) -> 212.0
     celsius_to_fahrenheit(-40) -> -40.0
     """
-    pass
+    f = celsius * 9/5 +32
+    return f
 
 
 def circle_area(radius):
@@ -25,7 +27,8 @@ def circle_area(radius):
     circle_area(1) -> 3.14
     circle_area(2.5) -> 19.63
     """
-    pass
+    area = round(math.pi * radius ** 2, 2)
+    return area
 
 
 def seconds_to_hms(total_seconds):
@@ -35,7 +38,9 @@ def seconds_to_hms(total_seconds):
     seconds_to_hms(59)   -> '00:00:59'
     Hint: the operators // and % are your friends. f-strings can pad: f"{5:02d}" -> '05'
     """
-    pass
+    hours, reminder = divmod(total_seconds, 3600)
+    minutes, seconds = divmod(reminder, 60)
+    return f"{hours:02d}:{minutes:02d}:{seconds:02d}"
 
 
 def price_after_discount(price, quantity, discount_percent):
@@ -44,7 +49,9 @@ def price_after_discount(price, quantity, discount_percent):
     price_after_discount(100, 3, 10) -> 270.0
     price_after_discount(19.99, 2, 0) -> 39.98
     """
-    pass
+    price_on_discount = price - (discount_percent / 100 * price)
+    total_price = price_on_discount * quantity
+    return round(total_price, 2)
 
 
 def format_receipt_line(product, total, currency="AED"):
@@ -53,7 +60,7 @@ def format_receipt_line(product, total, currency="AED"):
     format_receipt_line("Laptop", 5000)          -> 'Laptop: AED 5000.00'
     format_receipt_line("Mouse", 45.5, "USD")    -> 'Mouse: USD 45.50'
     """
-    pass
+    return f"{product}: {currency} {total:.2f}"
 
 
 def age_from_birth_year(birth_year, current_year):
@@ -61,7 +68,7 @@ def age_from_birth_year(birth_year, current_year):
 
     age_from_birth_year(2002, 2026) -> 24
     """
-    pass
+    return current_year - birth_year if birth_year <= current_year else 0
 
 
 def to_number(text):
@@ -71,7 +78,8 @@ def to_number(text):
     to_number("42")    -> 42      (an int)
     to_number(" 3.5 ") -> 3.5     (a float)
     """
-    pass
+    text = text.strip()
+    return float(text) if "." in text else int(text)
 
 
 # ---------------------------------------------------------------------------

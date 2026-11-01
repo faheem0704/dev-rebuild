@@ -2,6 +2,7 @@
 Week 1 · Exercise 2: Conditions and loops
 Run:  pytest week01/test_ex02_conditions_loops.py -v
 """
+import math
 
 
 def grade(score):
@@ -34,16 +35,21 @@ def fizzbuzz(n):
         elif i % 3 == 0:
             results.append("Fizz")
         elif i % 5 == 0:
-            results.append("Buzz")    
+            results.append("Buzz")
         else:
-            results.append(str(i))        
+            results.append(str(i))
     return results
 
 def is_prime(n):
     """True if n is a prime number, else False. Numbers below 2 are not prime.
     Bonus: only check divisors up to the square root of n. Why does that work?
     """
-    pass
+    if n < 2:
+        return False
+    for divisor in range(2, math.isqrt(n) + 1):
+        if n % divisor == 0:
+            return False
+    return True
 
 
 def multiplication_table(n, upto=10):
@@ -54,7 +60,7 @@ def multiplication_table(n, upto=10):
     answer = []
     for i in range(1, upto + 1):
         answer.append(f"{n} x {i} = {n*i}")
-    return answer    
+    return answer
 
 
 def sum_of_digits(n):
@@ -83,7 +89,7 @@ def count_vowels(text):
     for letter in text:
         if letter in "aeiou":
             count += 1
-    return count        
+    return count
 
 
 def guessing_game_result(secret, guesses, max_tries=3):
@@ -98,7 +104,11 @@ def guessing_game_result(secret, guesses, max_tries=3):
     guessing_game_result(7, [1, 2, 3, 7])  -> 'Out of tries'
     Hint: enumerate() gives you the index and the value together.
     """
-    pass
+    guesses = guesses[:max_tries]
+    for position, number in enumerate(guesses, start=1):
+        if number == secret:
+            return f"Correct on try {position}"
+    return "Out of tries"
 
 
 # ---------------------------------------------------------------------------

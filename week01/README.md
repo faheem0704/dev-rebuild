@@ -36,7 +36,8 @@ That struggle is the learning. Typing along with a video feels productive but st
 3. 🔁 Warm-up habit starts today: re-solve `seconds_to_hms` from a blank file before anything else.
 
 ### Day 5: Strings
-1. 📖 Read: Python docs tutorial §3.1.2 "Text" (docs.python.org/3/tutorial/introduction.html), predicting each output.
+1. 🎥 Watch: Corey Schafer, **"Python Tutorial for Beginners 2: Strings - Working with Textual Data"** (~20 min), then **"Python Tutorial: Slicing Lists and Strings"** (~10 min). Then do the predict-then-run drills below without the video.
+   Predict, then run: `"python"[0]`, `"python"[-1]`, `"python"[1:4]`, `"python"[::-1]`, `"a,b,c".split(",")`, `"-".join(["a", "b"])`, `"hello".replace("l", "L")`, `"Hi".find("i")`
 2. ✍️ `ex03_strings.py`. `compress` is your **first real algorithm**. Solve it on **paper first**: walk through "aaabbc" by hand and write down what you have to remember at each step. Then code it.
 3. 🗣️ INTERVIEW_BANK: Week 1 questions 1–3.
 

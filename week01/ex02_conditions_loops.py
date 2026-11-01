@@ -114,6 +114,9 @@ def guessing_game_result(secret, guesses, max_tries=3):
 # ---------------------------------------------------------------------------
 # EXPLAIN IT
 # 1. When would you choose a while loop over a for loop?
+#answer. we should use while loop over for loop when the number of iterations are unkown in advance and it depends on a dynamic condition being met. we should use for loops when iterating over a fixed sequence, collection or a number of steps.
 # 2. What's the difference between break, continue, and pass?
+#answer. break is usef to break out of a loop. continue is used to skip the current step and continue the loop, and pass is used to do nothing.. it says do nothing in here in the code block...
 # 3. Name 5 "falsy" values in Python.
+#answer. False, None, 0, 0.0, "", [], {},()
 # ---------------------------------------------------------------------------

@@ -85,6 +85,9 @@ def to_number(text):
 # ---------------------------------------------------------------------------
 # EXPLAIN IT (answer out loud, then in a comment below; Claude can grade it)
 # 1. What's the difference between / and // ? What does % return?
+# answer: the / operator is used for  true division and the // operator is used to mind the quotient without the reminder. the % operator give us the reminder.
 # 2. Why does 0.1 + 0.2 == 0.3 give False? (Predict first, then try it in the REPL)
+#answer.because the computers store the decimal  numbers in binary code and the 0.1 or 0.2 become infinite repeating fractions and is stored as 0.30000000..4 so its not == 0.3
 # 3. What does type(5 / 1) return and why?
+# answer. it returns <class 'float'> because the / operator performs true division and python converts to float even if the numbers divide evenly..
 # ---------------------------------------------------------------------------

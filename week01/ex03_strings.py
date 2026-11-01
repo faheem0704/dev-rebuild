@@ -13,7 +13,8 @@ def is_palindrome(text):
     is_palindrome("Never odd or even") -> True
     is_palindrome("python")            -> False
     """
-    pass
+    text = text.lower().replace(" ", "")
+    return text == text[::-1]
 
 
 def reverse_words(sentence):
@@ -21,15 +22,19 @@ def reverse_words(sentence):
 
     reverse_words("hello big world") -> "world big hello"
     """
-    pass
+    result = " ".join(sentence.split()[::-1])
+    return result
 
 
 def initials(full_name):
     """initials("ada lovelace")      -> "A.L."
     initials("grace brewster hopper") -> "G.B.H."
     """
-    pass
-
+    words = full_name.split()
+    result = ""
+    for word in words:
+        result += word[0].upper() + "."
+    return result
 
 def clean_name(raw):
     """Strip outer spaces, collapse inner spaces, capitalize each word.

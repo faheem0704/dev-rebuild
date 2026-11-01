@@ -25,7 +25,7 @@ Started: 2026-10-27, the day after the interview. This is day one.
 - **Running the tests yourself before asking for review**: several reviews were for code with a SyntaxError.
 - **Trailing whitespace / 2 blank lines between functions**: flagged in 4 reviews. Turn on VS Code "trim trailing whitespace".
 - **Committing**: only 2 commits so far. Commit every time something turns green.
-- **EXPLAIN IT questions in ex01 and ex02**: not answered yet.
+- **EXPLAIN IT answers**: first graded 2026-11-01. ex01 avg 3.7/5, ex02 avg 3.3/5 (gate needs ≥ 4 each). Concepts mostly right; missing **examples from my own code** and **the follow-up/gotcha**. `pass` was explained wrong; `False`/`None` written in lowercase.
 
 ## Mistake journal (every bug you hit = one line. This becomes gold before interviews)
 | Date | What went wrong | Why | Lesson |

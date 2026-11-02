@@ -114,5 +114,5 @@ def compress(text):
 # 2. What does "python"[1:4] return? What about "python"[-2:]? (Predict, then run.)
 # answer. it returns 'yth' that is it slices the text from the 1th index till the the 4th index but it does not include the 4th index. "pyhton"[-2:] returns 'on' -2 is the second last index and it returns the the characters from second last index till the end because no end indexed is mentioned.
 # 3. Why is " ".join(words) better than adding strings with + inside a loop?
-# answer. adding strings with + concatnates the string without spaces unless we hard code space in the string itself. but " ".join() stitches the string together with the character mentioned inside the double quotes as the seperator in between the words, in this case a blank space.
+# answer. strings are immutable. adding strings with + each time makes a new string object in the memory and copies everything to it which would give us a O(n²). but " ".join() works out the total size once and builds the result in one pass with O(n).
 # ---------------------------------------------------------------------------

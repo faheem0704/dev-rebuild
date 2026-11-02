@@ -6,13 +6,14 @@ Started: 2026-10-27, the day after the interview. This is day one.
 | Week | Gate | Date passed | Notes |
 |---|---|---|---|
 | 0 | Setup: venv, pytest, Git, GitHub push | 2026-10-28 | Repo `dev-rebuild` pushed to GitHub ✅ |
-| 1 | week01 tests green + Guessing Game & Calculator + from-memory rewrites | | ex01 ✅ 15/15 · ex02 ✅ 34/34 (2026-11-01) · ex03 ⬜ · project ⬜ · rewrites ⬜ · EXPLAIN IT ⬜ |
+| 1 | week01 tests green + Guessing Game & Calculator + from-memory rewrites | | ex01 ✅ 15/15 · ex02 ✅ 34/34 (2026-11-01) · ex03 ✅ 17/17 (2026-11-02): all week01 tests 66/66 · project ⬜ · rewrites ⬜ · EXPLAIN IT ⬜ |
 | 2 | week02 tests green + Expense Tracker + 4 interview Qs scored ≥ 4/5 | | |
 
 ## Videos watched
 - [x] CS50P Lecture 0: Functions, Variables
 - [x] CS50P Lecture 1: Conditionals (2026-10-31)
 - [x] CS50P Lecture 2: Loops (2026-11-01)
+- [ ] Corey Schafer: Strings + Slicing (Day 5). Tick this if you watched them.
 - [ ] CS50P Lecture 3: Exceptions (Week 2)
 
 ## Weak spots (things to re-review; Claude adds these after quizzes)
@@ -25,7 +26,7 @@ Started: 2026-10-27, the day after the interview. This is day one.
 - **Running the tests yourself before asking for review**: several reviews were for code with a SyntaxError.
 - **Trailing whitespace / 2 blank lines between functions**: flagged in 4 reviews. Turn on VS Code "trim trailing whitespace".
 - **Committing**: only 2 commits so far. Commit every time something turns green.
-- **EXPLAIN IT answers**: first graded 2026-11-01. ex01 avg 3.7/5, ex02 avg 3.3/5 (gate needs ≥ 4 each). Concepts mostly right; missing **examples from my own code** and **the follow-up/gotcha**. `pass` was explained wrong; `False`/`None` written in lowercase.
+- **EXPLAIN IT answers** (gate needs ≥ 4 each): ex01 3 / 4 / 4 (not rewritten yet) · ex02 4 / 4 / 4 ✅ after fixes (2026-11-02) · ex03 4 / 4.5 / **2**. Pattern: concepts mostly right, but **examples from my own code** and **the follow-up/gotcha** are missing. ex03 Q3 missed the real reason (performance: immutability → `+=` copies everything each time).
 
 ## Mistake journal (every bug you hit = one line. This becomes gold before interviews)
 | Date | What went wrong | Why | Lesson |
@@ -48,6 +49,13 @@ Started: 2026-10-27, the day after the interview. This is day one.
 | 2026-10-31 | Typed `1 % 5` instead of `i % 5` | The digit 1 looks like the letter i | Silent bugs: code runs but is wrong; tests catch them |
 | 2026-10-31 | `letter == 'a' or 'e'` counted every letter | Each side of `or` is separate; `'e'` alone is truthy | Repeat the full comparison, or use `letter in "aeiou"` |
 | 2026-10-31 | `for "aeiou" in text:` → SyntaxError | Mixed the two meanings of `in` | `for x in items:` loops; `x in items` asks True/False |
+| 2026-11-01 | guessing game returned "Out of tries" after the 1st wrong guess | `else: return` inside the loop ends the function early | Decide "not found" only AFTER the loop |
+| 2026-11-01 | Slice kept 4 guesses instead of 3 | Used `+1` like in `range` | `[:k]` gives exactly k items |
+| 2026-11-02 | "Never odd or even" not a palindrome | `.strip()` only removes spaces at the ends | `.replace(" ", "")` removes all spaces |
+| 2026-11-02 | `AttributeError: 'list' object has no attribute 'join'` | `join` is a string method | `"sep".join(list)`; AttributeError = method called on the wrong type |
+| 2026-11-02 | Extra spaces made empty words | `.split(" ")` splits on every single space | `.split()` with no argument handles any whitespace |
+| 2026-11-02 | `initials`: UnboundLocalError, then only the last letter was kept | Looped over `result` instead of `words`; `=` overwrote instead of adding | Start empty before the loop, `+=` inside (accumulator) |
+| 2026-11-02 | ex03 Q3: explained `join` by separators only | Missed the real reason | Immutable strings → `+=` copies everything each time → O(n²); `join` is O(n) |
 
 ## Concepts learned so far
 - `/` vs `//` vs `%`, `**`, operator precedence
@@ -66,6 +74,12 @@ Started: 2026-10-27, the day after the interview. This is day one.
 - build a list: `results = []` → `.append()` in the loop → `return` after the loop
 - the two meanings of `in`
 - first Big-O: digits loop = O(log n); looping over text = O(n)
+- `enumerate(items, start=1)`, list slicing `[:k]`, **linear search** (return early when found; "not found" after the loop)
+- `math.isqrt`, divisor pairs → `is_prime` in **O(√n)**
+- strings: `[::-1]`, `.replace()`, `.split()`, `"sep".join()`, `.title()`, `sorted()` on a string, method chaining
+- `return a == b` directly instead of `if/else` returning True/False
+- **accumulator pattern** (numbers, lists, strings) · **"champion" pattern** (best so far) · **helper functions** for DRY
+- first real algorithm: **run-length encoding** (`compress`)
 
 ## Daily log
 ### 2026-10-28 | Week 1 Day 1
@@ -92,7 +106,16 @@ Started: 2026-10-27, the day after the interview. This is day one.
 
 ### 2026-11-01 | Week 1 Day 4 | hours: _
 - **Watched:** CS50P Lecture 2: Loops ✅
-- **Next:** commit · fizzbuzz from memory · `guessing_game_result` · `is_prime` · EXPLAIN IT answers
+- **Built / committed:** `guessing_game_result` ✅ (first linear search), `is_prime` ✅, then refactored to **O(√n)** (a trillion-sized prime in 0.16 s) → **ex02 complete, 34/34** · committed `0c0fa86`
+- **Learned:** `enumerate(start=1)`, list slicing `[:k]`, "decide 'not found' only after the loop", divisor pairs → √n, Big-O O(n) vs O(√n)
+- **Explained out loud:** EXPLAIN IT ex01 + ex02 first drafts written (graded 3.7 and 3.3)
+
+### 2026-11-02 | Week 1 Day 5 | hours: _
+- **Built / committed:** ex03: `is_palindrome`, `reverse_words`, `initials` (committed `1f482a9`), then `clean_name`, `count_char`, `longest_word`, `is_anagram`, a `text_cleanup` helper, and `compress` → **all week01 exercises done, 66/66 green** 🎉 (last 5 functions NOT committed yet)
+- **Learned:** slicing `[::-1]`, `.replace()`, `.split()` vs `.split(" ")`, `"sep".join(list)`, method chaining, returning a comparison directly (no `if/else`), the accumulator pattern (number / list / string), the "champion" pattern, helper functions + DRY, run-length encoding
+- **Confused me:** `compress` needed the plain-English plan (hint level 3), so rewrite it from memory to prove it
+- **Explained out loud:** ex02 answers rewritten → 4/4/4 ✅ · ex03 answers graded 4 / 4.5 / 2
+- **Tomorrow:** commit · from-memory rewrites (fizzbuzz, is_prime, compress) · rewrite ex01 Q1 + ex03 Q3 · start the milestone project
 
 <!-- Copy this block each day -->
 ### YYYY-MM-DD | Week _ Day _ | hours: _

@@ -6,7 +6,7 @@ Started: 2026-10-27, the day after the interview. This is day one.
 | Week | Gate | Date passed | Notes |
 |---|---|---|---|
 | 0 | Setup: venv, pytest, Git, GitHub push | 2026-10-28 | Repo `dev-rebuild` pushed to GitHub ✅ |
-| 1 | week01 tests green + Guessing Game & Calculator + from-memory rewrites | | ex01 ✅ 15/15 · ex02 ✅ 34/34 (2026-11-01) · ex03 ✅ 17/17 (2026-11-02): all week01 tests 66/66 · project ⬜ · from-memory rewrites ✅ (2026-11-02, warmup.py) · EXPLAIN IT ✅ all ≥ 4 (2026-11-02) |
+| 1 | week01 tests green + Guessing Game & Calculator + from-memory rewrites | | ex01 ✅ 15/15 · ex02 ✅ 34/34 (2026-11-01) · ex03 ✅ 17/17 (2026-11-02): all week01 tests 66/66 · project: guessing game ✅ (2026-11-04), calculator ⬜ · from-memory rewrites ✅ (2026-11-02, warmup.py) · EXPLAIN IT ✅ all ≥ 4 (2026-11-02) |
 | 2 | week02 tests green + Expense Tracker + 4 interview Qs scored ≥ 4/5 | | |
 
 ## Videos watched

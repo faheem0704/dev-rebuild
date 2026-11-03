@@ -4,8 +4,8 @@ def main():
         if choice == "q":
             print("good bye!")
             break
-        first = float(input("Enter first number: "))
-        second = float(input("Enter second number: "))
+        first = get_number("first")
+        second = get_number("second")
         if choice == "/" and second == 0:
             print("cant be divided by 0")
             continue
@@ -19,6 +19,9 @@ def main():
             answer = divide(first, second)
         elif choice == "**":
             answer = power(first, second)
+        else:
+            print("no operation!")
+            continue
         print(f"{answer:.2f}")
 
 
@@ -40,19 +43,34 @@ def menu():
         else:
             print("please enter a valid menu choice!")
 
+
 def add(first, second):
     return first + second
+
 
 def subtract(first, second):
     return first - second
 
+
 def multiply(first, second):
     return first * second
+
 
 def divide(first, second):
     return first / second
 
+
 def power(first, second):
     return first ** second
+
+def get_number(label):
+    while True:
+        text = input(f"enter the {label} number: ").strip()
+        try:
+            return float(text)
+        except ValueError:
+            print("please enter a  number, e.g 3 or -2.5")
+
+
 
 main()

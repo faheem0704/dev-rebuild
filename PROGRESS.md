@@ -6,7 +6,7 @@ Started: 2026-10-27, the day after the interview. This is day one.
 | Week | Gate | Date passed | Notes |
 |---|---|---|---|
 | 0 | Setup: venv, pytest, Git, GitHub push | 2026-10-28 | Repo `dev-rebuild` pushed to GitHub ✅ |
-| 1 | week01 tests green + Guessing Game & Calculator + from-memory rewrites | | ex01 ✅ 15/15 · ex02 ✅ 34/34 (2026-11-01) · ex03 ✅ 17/17 (2026-11-02): all week01 tests 66/66 · project: guessing game ✅ (2026-11-04), calculator ⬜ · from-memory rewrites ✅ (2026-11-02, warmup.py) · EXPLAIN IT ✅ all ≥ 4 (2026-11-02) |
+| 1 | week01 tests green + Guessing Game & Calculator + from-memory rewrites | **2026-11-04** ✅ | ex01 ✅ 15/15 · ex02 ✅ 34/34 (2026-11-01) · ex03 ✅ 17/17 (2026-11-02): all week01 tests 66/66 · project: guessing game ✅ + calculator ✅ (2026-11-04) · from-memory rewrites ✅ (2026-11-02, warmup.py) · EXPLAIN IT ✅ all ≥ 4 (2026-11-02) |
 | 2 | week02 tests green + Expense Tracker + 4 interview Qs scored ≥ 4/5 | | |
 
 ## Videos watched
@@ -57,6 +57,14 @@ Started: 2026-10-27, the day after the interview. This is day one.
 | 2026-11-02 | `initials`: UnboundLocalError, then only the last letter was kept | Looped over `result` instead of `words`; `=` overwrote instead of adding | Start empty before the loop, `+=` inside (accumulator) |
 | 2026-11-02 | ex03 Q3: explained `join` by separators only | Missed the real reason | Immutable strings → `+=` copies everything each time → O(n²); `join` is O(n) |
 
+| 2026-11-02 | Guessing game v0 asked for only ONE guess | `input()` outside the loop; `return` inside the loop | The thing that repeats must be inside the loop |
+| 2026-11-03 | `NameError` after renaming `guess` → `text` | Renamed in one place only | After a rename, run every path |
+| 2026-11-03 | `divmod(choose_difficulty())` → TypeError | Confused "a function that returns a tuple" with `divmod` itself | Unpack your own function's result directly: `a, b = f()` |
+| 2026-11-04 | Best score showed the LATEST score, and a loss counted as a score | Overwrote instead of comparing; loss returned 0 | Champion pattern + `None` for "no result" |
+| 2026-11-04 | `replace("." or "-", ...)` rejected negatives | `"." or "-"` evaluates to `"."` | `or` combines conditions, not values |
+| 2026-11-04 | Spaces stopped working after adding a check (regression) | New check ran before `float()` | Re-test old cases after every change; let `float()` decide with `try/except` |
+| 2026-11-04 | History printed as a raw Python list | `print(history)` shows Python's format | Never show users Python internals (`[...]`, `None`) |
+
 ## Concepts learned so far
 - `/` vs `//` vs `%`, `**`, operator precedence
 - `import math`, `math.pi`, `round(x, 2)`
@@ -80,6 +88,10 @@ Started: 2026-10-27, the day after the interview. This is day one.
 - `return a == b` directly instead of `if/else` returning True/False
 - **accumulator pattern** (numbers, lists, strings) · **"champion" pattern** (best so far) · **helper functions** for DRY
 - first real algorithm: **run-length encoding** (`compress`)
+- writing my own functions: parameters, `return`, **returning two values** (tuple) and unpacking them
+- `None` as "no result", checked with `is None` / `is not None`
+- **validation loops** (ask until valid, then `return`) · **`try/except ValueError`** around `float()`
+- **building a program in versions** (v1 → v5), committing each one · regression testing
 
 ## Daily log
 ### 2026-10-28 | Week 1 Day 1
@@ -116,6 +128,12 @@ Started: 2026-10-27, the day after the interview. This is day one.
 - **Confused me:** `compress` needed the plain-English plan (hint level 3), so rewrite it from memory to prove it
 - **Explained out loud:** ex02 answers rewritten → 4/4/4 ✅ · ex03 answers graded 4 / 4.5 / 2
 - **Tomorrow:** commit · from-memory rewrites (fizzbuzz, is_prime, compress) · rewrite ex01 Q1 + ex03 Q3 · start the milestone project
+
+### 2026-11-03 → 11-04 | Week 1 Day 6 (project) | hours: _
+- **Built / committed:** Guessing Game v1→v5 (difficulty, validation, functions, play again, best score) · Calculator v1→v4 (menu, 5 operations, divide-by-zero, `try/except` validation, history of last 5)
+- **Learned:** program design with functions, returning tuples, `None`, the champion pattern, `try/except`, regressions
+- **Week 1 gate: PASSED 2026-11-04** 🎉 (66/66 tests · from-memory rewrites · EXPLAIN IT ≥ 4 · both projects)
+- **Still to do before Week 2:** mock interview week 1 · write ⭐ Q1 (exception handling) in INTERVIEW_BANK using the calculator story
 
 <!-- Copy this block each day -->
 ### YYYY-MM-DD | Week _ Day _ | hours: _

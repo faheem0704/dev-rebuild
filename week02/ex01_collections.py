@@ -12,7 +12,16 @@ def word_frequency(text):
 
     word_frequency("The cat. The hat!") -> {'the': 2, 'cat': 1, 'hat': 1}
     """
-    pass
+    text = text.lower()
+    for mark in ".,!?":
+        text = text.replace(mark, "")
+    words = text.split()
+    counts = {}
+    for word in words:
+        counts[word] = counts.get(word, 0) + 1
+    return counts
+
+
 
 
 def top_student(students):

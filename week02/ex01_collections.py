@@ -30,11 +30,14 @@ def remove_duplicates_keep_order(items):
     remove_duplicates_keep_order([3, 1, 3, 2, 1]) -> [3, 1, 2]
     Think: why doesn't list(set(items)) work here?
     """
+    seen = set()
     new_list = []
     for item in items:
-        if item not in new_list:
+        if item not in seen:
+            seen.add(item)
             new_list.append(item)
     return new_list
+
 
 def common_elements(a, b):
     """Return the elements present in both lists, as a SORTED list without duplicates.
@@ -42,11 +45,8 @@ def common_elements(a, b):
 
     common_elements([1, 2, 2, 3], [2, 3, 4]) -> [2, 3]
     """
-    temp = set(a).intersection(set(b))
-    result = []
-    for item in temp:
-        result.append(item)
-    return result
+    common = sorted(set(a) & set(b))
+    return common
 
 
 def total_by_category(expenses):
@@ -71,10 +71,7 @@ def even_squares(numbers):
 
     even_squares([1, 2, 3, 4]) -> [4, 16]
     """
-    squares = []
-    for num in numbers:
-        if num % 2 == 0:
-            squares.append(num ** 2)
+    squares = [num ** 2 for num in numbers if num % 2 == 0]
     return squares
 
 def revenue_by_product(sales_lines):

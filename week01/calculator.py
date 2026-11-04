@@ -1,9 +1,13 @@
 def main():
+    history = []
     while True:
         choice = menu()
         if choice == "q":
             print("good bye!")
             break
+        if choice == "h":
+            show_history(history)
+            continue
         first = get_number("first")
         second = get_number("second")
         if choice == "/" and second == 0:
@@ -23,11 +27,21 @@ def main():
             print("no operation!")
             continue
         print(f"{answer:.2f}")
+        history.append(f"{first:.2f} {choice} {second:.2f} = {answer:.2f}")
+        history = history[-5:]
+
+
+def show_history(history):
+    if not history:
+        print("no calculations yet!")
+    else:
+        for entry in history:
+            print(entry)
 
 
 def menu():
     while True:
-        text = input("1) add  2) subtract  3) multiply  4) divide  5) power  q) quit: ").strip().lower()
+        text = input("1) add  2) subtract  3) multiply  4) divide  5) power  q) quit  h) history: ").strip().lower()
         if text == "1":
             return "+"
         elif text == "2":
@@ -40,6 +54,8 @@ def menu():
             return "**"
         elif text == "q":
             return "q"
+        elif text == "h":
+            return "h"
         else:
             print("please enter a valid menu choice!")
 
@@ -63,13 +79,14 @@ def divide(first, second):
 def power(first, second):
     return first ** second
 
+
 def get_number(label):
     while True:
         text = input(f"enter the {label} number: ").strip()
         try:
             return float(text)
         except ValueError:
-            print("please enter a  number, e.g 3 or -2.5")
+            print("please enter a number, e.g. 3 or -2.5")
 
 
 

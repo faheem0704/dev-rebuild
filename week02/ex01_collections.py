@@ -78,7 +78,7 @@ def invert_dict(d):
 
     invert_dict({"a": 1, "b": 2}) -> {1: "a", 2: "b"}
     """
-    pass
+    return {value: key for key, value in d.items()}
 
 
 def even_squares(numbers):

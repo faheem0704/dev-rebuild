@@ -118,6 +118,13 @@ def top_n(counts, n):
 # ---------------------------------------------------------------------------
 # EXPLAIN IT
 # 1. Why is checking `x in my_set` faster than `x in my_list` for large data?
+#answer. Checking x in my_set is faster than x in my_list because of how Python stores the data in memory and how it looks up items:
+# List (Linear Search — O(n) time): A list is stored as a dynamic array. When you check x in my_list, Python has to scan through the elements one by one from the beginning until it finds a match or hits the end of the list. If the list has 1,000,000 items, it may have to make up to a million comparisons.
+#Set (Hash Table Lookup — O(1) time): A set is backed by a hash table. When you run x in my_set, Python calculates the hash value of x and jumps directly to that memory location (like looking up a word in a dictionary or an index). This takes a constant amount of time no matter how large the set grows.
 # 2. Why can a tuple be a dict key but a list cannot?
+#answer. tuples are immutable (their contents cannot change), making them hashable and eligible as dictionary keys. Conversely, lists are mutable (you can append, remove, or modify items), which makes them unhashable.
 # 3. a = [1, 2]; b = a; b.append(3). What is a now? Why? (Predict, then run.)
+#answer. a is now: [1, 2, 3], because Shared Reference: When you write b = a, Python does not make a new copy of the list. Instead, b points to the exact same list object in memory as a.
+# Mutability: Lists are mutable, meaning you can change their contents in place.
+# Side Effect: When you call b.append(3), it modifies that shared list object. Because a and b reference the same object, the change shows up in a as well
 # ---------------------------------------------------------------------------

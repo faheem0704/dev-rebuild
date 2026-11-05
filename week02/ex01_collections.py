@@ -65,7 +65,12 @@ def total_by_category(expenses):
 
     -> {"food": 75, "transport": 20}
     """
-    pass
+    totals = {}
+    for expense in expenses:
+        category = expense["category"]
+        amount = expense["amount"]
+        totals[category] = totals.get(category, 0) + amount
+    return totals
 
 
 def invert_dict(d):

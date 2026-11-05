@@ -22,15 +22,16 @@ def word_frequency(text):
     return counts
 
 
-
-
 def top_student(students):
     """students is a list of dicts like {"name": "Sara", "score": 94}.
     Return the NAME of the student with the highest score.
     Return None for an empty list.
     Hint: max() accepts key=...
     """
-    pass
+    if not students:
+        return None
+    best_student = max(students, key=lambda student: student["score"])
+    return highest["name"]
 
 
 def remove_duplicates_keep_order(items):

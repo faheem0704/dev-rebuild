@@ -96,7 +96,12 @@ def revenue_by_product(sales_lines):
     Return a dict product -> total revenue (quantity * unit_price), rounded to 2.
     Hint: str.split() gives you a list of 4 parts. Convert the numbers!
     """
-    pass
+    totals = {}
+    for sales_line in sales_lines:
+        _, product, quantity, price = sales_line.split()
+        sale_revenue = int(quantity) * float(price)
+        totals[product] = totals.get(product, 0) + sale_revenue
+    return {product: round(revenue, 2) for product, revenue in totals.items()}
 
 
 def top_n(counts, n):

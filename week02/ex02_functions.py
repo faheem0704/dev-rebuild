@@ -36,7 +36,9 @@ def build_profile(name, **details):
 
 def factorial(n):
     """Recursive factorial. factorial(0) == 1. No loops allowed!"""
-    pass
+    if n <= 1:
+        return 1
+    return n * factorial(n - 1)
 
 
 def flatten(nested):
@@ -73,6 +75,9 @@ def apply_to_all(func, items):
 # ---------------------------------------------------------------------------
 # EXPLAIN IT
 # 1. What's the difference between `return` and `print`? Why do the tests need return?
+# answer print function displays or prints the values of a function where as the return function sends the result of that function to where it was called.
 # 2. What are *args and **kwargs? What types are they inside the function?
+# answer. *args and **kwargs allow you to pass a multiple number of arguments to a function. *args is tuple inside a function and **kwargs is dictionaries type inside a function.
 # 3. What happens if a recursive function has no base case? What error do you get?
+# answer.
 # ---------------------------------------------------------------------------

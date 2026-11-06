@@ -59,9 +59,6 @@ def withdraw(balance, amount):
     return balance - amount
 
 
-
-
-
 def get_port(config):
     """config is a dict that may contain "port" (an int or a numeric string).
     - Key missing          -> return default 8080  (practice: catch KeyError)
@@ -69,7 +66,16 @@ def get_port(config):
     - Outside 1..65535     -> raise ValueError("Invalid port")
     - Otherwise return the port as an int
     """
-    pass
+    try:
+        port = int(config["port"])
+    except KeyError:
+        return 8080
+    except (ValueError, TypeError):
+        raise ValueError("Invalid port")
+    else:
+        if not 1 <= port <= 65535:
+            raise ValueError("Invalid port")
+        return port
 
 
 def run_with_cleanup(func, log):

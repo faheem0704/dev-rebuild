@@ -25,14 +25,13 @@ def average(*numbers):
     return sum(numbers) / len(numbers)
 
 
-
 def build_profile(name, **details):
     """Return a dict with 'name' plus every keyword argument passed.
 
     build_profile("Sara", role="analyst", team="ML")
         -> {"name": "Sara", "role": "analyst", "team": "ML"}
     """
-    pass
+    return {"name": name, **details}
 
 
 def factorial(n):

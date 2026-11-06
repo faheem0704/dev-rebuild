@@ -54,7 +54,10 @@ def add_item(item, items=None):
     Read week 9 of the PDF roadmap on 'mutable default arguments' to see why a
     default of [] would break this.
     """
-    pass
+    if items is None:
+        items = []
+    items.append(item)
+    return items
 
 
 def apply_to_all(func, items):

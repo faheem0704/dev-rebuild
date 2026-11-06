@@ -51,9 +51,15 @@ def parse_age(text):
 def withdraw(balance, amount):
     """Return the new balance.
     - amount <= 0  -> raise ValueError("Amount must be positive")
-    - amount > balance -> raise InsufficientFundsError(f"Need {amount}, have {balance}")
-    """
-    pass
+    - amount > balance -> raise InsufficientFundsError(f"Need {amount}, have {balance}")"""
+    if amount <= 0:
+        raise ValueError("Amount must be positive")
+    if amount > balance:
+        raise InsufficientFundsError(f"Need {amount}, have {balance}")
+    return balance - amount
+
+
+
 
 
 def get_port(config):

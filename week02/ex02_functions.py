@@ -20,7 +20,10 @@ def average(*numbers):
     average(1, 2, 3, 4) -> 2.5
     average()           -> 0.0
     """
-    pass
+    if not numbers:
+        return 0.0
+    return sum(numbers) / len(numbers)
+
 
 
 def build_profile(name, **details):

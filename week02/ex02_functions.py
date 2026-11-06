@@ -66,7 +66,8 @@ def apply_to_all(func, items):
     apply_to_all(str.upper, ["a", "b"]) -> ["A", "B"]
     apply_to_all(len, ["hi", "hello"])  -> [2, 5]
     """
-    pass
+    return [func(item) for item in items]
+
 
 
 # ---------------------------------------------------------------------------

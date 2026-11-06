@@ -26,7 +26,10 @@ def safe_divide(a, b):
     """Return a / b. If b is zero, return None instead of crashing.
     Use try/except ZeroDivisionError. Don't use an `if` check.
     """
-    pass
+    try:
+        return a / b
+    except ZeroDivisionError:
+        return None
 
 
 def parse_age(text):
@@ -35,7 +38,14 @@ def parse_age(text):
     - Below 0 or above 150? raise ValueError("Age out of range")
     Hint: int('abc') already raises ValueError. Catch it and raise your own message.
     """
-    pass
+    try:
+        age = int(text)
+    except ValueError:
+        raise ValueError("Age must be a whole number")
+    else:
+        if not 0 <= age <= 150:
+            raise ValueError("Age out of range")
+        return age
 
 
 def withdraw(balance, amount):

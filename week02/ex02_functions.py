@@ -47,7 +47,13 @@ def flatten(nested):
     flatten([1, [2, [3, [4]], 5]]) -> [1, 2, 3, 4, 5]
     Hint: isinstance(x, list)
     """
-    pass
+    flat = []
+    for item in nested:
+        if isinstance(item, list):
+            flat.extend(flatten(item))
+        else:
+            flat.append(item)
+    return flat
 
 
 def add_item(item, items=None):

@@ -81,9 +81,9 @@ def apply_to_all(func, items):
 # ---------------------------------------------------------------------------
 # EXPLAIN IT
 # 1. What's the difference between `return` and `print`? Why do the tests need return?
-# answer print function displays or prints the values of a function where as the return function sends the result of that function to where it was called.
+# answer print is a built-in function displays the text or data for a human to read, it does not pass any value back to the program. where as the return is a keyword inside a function sends a value of that function to where it was called. the tests need return because only then it can use those values to pass custom or pre defined inputs.
 # 2. What are *args and **kwargs? What types are they inside the function?
 # answer. *args and **kwargs allow you to pass a multiple number of arguments to a function. *args is tuple inside a function and **kwargs is dictionaries type inside a function.
 # 3. What happens if a recursive function has no base case? What error do you get?
-# answer.
+# answer. if a recursive function has no base case it run for infinite time. it gives a recirsion error saying maximum recursion depth exeeded because python has built in safety limit typically 1000 calls to intentionally crash the program.
 # ---------------------------------------------------------------------------

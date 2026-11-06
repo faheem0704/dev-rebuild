@@ -10,7 +10,8 @@ def calculate_total(price, quantity, discount=0.0):
     calculate_total(100, 3, 0.10) -> 270.0
     calculate_total(100, 3)       -> 300.0
     """
-    pass
+    total = (price - price * discount) * quantity
+    return round(total, 2)
 
 
 def average(*numbers):

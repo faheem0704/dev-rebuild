@@ -111,7 +111,7 @@ def top_n(counts, n):
     top_n({"tea": 5, "coffee": 9, "juice": 5}, 2) -> [("coffee", 9), ("juice", 5)]
     Hint: sorted(..., key=lambda pair: (-pair[1], pair[0]))
     """
-    ordered = sorted(counts.items(), key=lambda pair: (-pair[1], pair[0]))
+    ordered = sorted(counts.items(), key=lambda pair: ())
     return ordered[:n]
 
 

@@ -21,6 +21,8 @@ def main():
 
         elif choice == "biggest":
             print(show_biggest_expenses(expenses))
+        elif choice == "delete":
+            delete_expense(expenses)
 
 
 def show_totals(totals):
@@ -46,6 +48,26 @@ def show_biggest_expenses(expenses):
         return "No expenses yet."
     return f"Biggest expense: {biggest['description']} ({biggest['amount']:.2f}, {biggest['category']})"
 
+
+def delete_expense(expenses):
+    if not expenses:
+        print("No expenses yet.")
+        return
+    print(list_expenses(expenses))
+    while True:
+        try:
+            number = int(input("enter the number of the list you want to delete: "))
+        except ValueError:
+            print("please enter a number, e.g. 3")
+            continue
+        if not 0 < number <= len(expenses):
+            print(f"Please enter a number from 1 to {len(expenses)}")
+            continue
+        break
+    index = number - 1
+    removed = expenses.pop(index)
+    print(f"Deleted: {removed['description']} ({removed['amount']:.2f})")
+    print(list_expenses(expenses))
 
 def list_expenses(expenses):
     if not expenses:
@@ -131,6 +153,7 @@ def menu():
             "2) List expenses   "
             "3) Totals by category   "
             "4) Biggest expense   "
+            "5) Delete expense   "
             "q) Quit "
         ).lower().strip()
 
@@ -145,6 +168,9 @@ def menu():
 
         elif text == "4":
             return "biggest"
+
+        elif text == "5":
+            return "delete"
 
         elif text == "q":
             return "q"

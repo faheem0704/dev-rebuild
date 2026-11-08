@@ -7,7 +7,7 @@ Started: 2026-10-27, the day after the interview. This is day one.
 |---|---|---|---|
 | 0 | Setup: venv, pytest, Git, GitHub push | 2026-10-28 | Repo `dev-rebuild` pushed to GitHub ✅ |
 | 1 | week01 tests green + Guessing Game & Calculator + from-memory rewrites | **2026-11-04** ✅ | ex01 ✅ 15/15 · ex02 ✅ 34/34 (2026-11-01) · ex03 ✅ 17/17 (2026-11-02): all week01 tests 66/66 · project: guessing game ✅ + calculator ✅ (2026-11-04) · from-memory rewrites ✅ (2026-11-02, warmup.py) · EXPLAIN IT ✅ all ≥ 4 (2026-11-02) |
-| 2 | week02 tests green + Expense Tracker + 4 interview Qs scored ≥ 4/5 | | week02 tests ✅ 30/30 (2026-11-07) · EXPLAIN IT: ex01 ✅ ex02 🟨 ex03 ⬜ · ⭐ interview Qs ⬜ · Expense Tracker ⬜ |
+| 2 | week02 tests green + Expense Tracker + 4 interview Qs scored ≥ 4/5 | **2026-11-08** ✅ (explain items skipped by choice) | week02 tests ✅ 30/30 (2026-11-07) · EXPLAIN IT: ex01 ✅ ex02 🟨 ex03 ⬜ · ⭐ interview Qs ⬜ · Expense Tracker ✅ (2026-11-08) |
 
 ## Videos watched
 - [x] CS50P Lecture 0: Functions, Variables
@@ -27,6 +27,8 @@ Started: 2026-10-27, the day after the interview. This is day one.
 - **Trailing whitespace / 2 blank lines between functions**: flagged in 4 reviews. Turn on VS Code "trim trailing whitespace".
 - **Committing**: only 2 commits so far. Commit every time something turns green.
 - **EXPLAIN IT answers** (gate needs ≥ 4 each): ex01 3 / 4 / 4 (not rewritten yet) · ex02 4 / 4 / 4 ✅ after fixes (2026-11-02) · ex03 4 / 4.5 / **2**. Pattern: concepts mostly right, but **examples from my own code** and **the follow-up/gotcha** are missing. ex03 Q3 missed the real reason (performance: immutability → `+=` copies everything each time).
+
+- **Skipped by choice (2026-11-08):** Week 2 EXPLAIN IT (ex02 Q1/Q2 rewrites, ex03) and INTERVIEW_BANK ⭐ Q1/Q2. Come back to these before applying for jobs: explaining was the interview gap.
 
 ## Mistake journal (every bug you hit = one line. This becomes gold before interviews)
 | Date | What went wrong | Why | Lesson |

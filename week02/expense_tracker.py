@@ -51,15 +51,15 @@ def list_expenses(expenses):
     if not expenses:
         return "No expenses yet."
 
-    result = f"{'Description':<20}{'Amount':>10}  Category\n"
+    result = f"{'#':>3}  {'Description':<20}{'Amount':>10}  Category\n"
     result += "-" * 45 + "\n"
 
-    for expense in expenses:
+    for number, expense in enumerate(expenses, start=1 ):
         description = expense["description"]
         category = expense["category"]
         amount = expense["amount"]
 
-        result += f"{description:<20}{amount:>10.2f}  {category}\n"
+        result += f"{number:>3}  {description:<20}{amount:>10.2f}  {category}\n"
 
     return result
 
@@ -153,4 +153,8 @@ def menu():
             print("Please enter a valid menu choice!")
 
 
-main()
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("\nGoodbye!")

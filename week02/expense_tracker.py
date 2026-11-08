@@ -42,14 +42,9 @@ def show_totals(totals):
 
 def show_biggest_expenses(expenses):
     biggest = biggest_expense(expenses)
-
     if biggest is None:
         return "No expenses yet."
-
-    return (
-        f"Biggest expense: {biggest['description']} "
-        f"({biggest['amount']:.2f}, {biggest['category']})"
-    )
+    return f"Biggest expense: {biggest['description']} ({biggest['amount']:.2f}, {biggest['category']})"
 
 
 def list_expenses(expenses):

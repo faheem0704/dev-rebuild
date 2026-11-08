@@ -7,7 +7,7 @@ Started: 2026-10-27, the day after the interview. This is day one.
 |---|---|---|---|
 | 0 | Setup: venv, pytest, Git, GitHub push | 2026-10-28 | Repo `dev-rebuild` pushed to GitHub ✅ |
 | 1 | week01 tests green + Guessing Game & Calculator + from-memory rewrites | **2026-11-04** ✅ | ex01 ✅ 15/15 · ex02 ✅ 34/34 (2026-11-01) · ex03 ✅ 17/17 (2026-11-02): all week01 tests 66/66 · project: guessing game ✅ + calculator ✅ (2026-11-04) · from-memory rewrites ✅ (2026-11-02, warmup.py) · EXPLAIN IT ✅ all ≥ 4 (2026-11-02) |
-| 2 | week02 tests green + Expense Tracker + 4 interview Qs scored ≥ 4/5 | | |
+| 2 | week02 tests green + Expense Tracker + 4 interview Qs scored ≥ 4/5 | | week02 tests ✅ 30/30 (2026-11-07) · EXPLAIN IT: ex01 ✅ ex02 🟨 ex03 ⬜ · ⭐ interview Qs ⬜ · Expense Tracker ⬜ |
 
 ## Videos watched
 - [x] CS50P Lecture 0: Functions, Variables

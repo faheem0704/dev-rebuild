@@ -84,12 +84,16 @@ def run_with_cleanup(func, log):
     If func raises, the exception must still propagate to the caller (don't swallow it!).
     This is exactly what `finally` is for.
     """
-    pass
+    try:
+        return func()
+    finally:
+        log.append("cleanup")
 
 
 # ---------------------------------------------------------------------------
 # EXPLAIN IT (these ARE the interview questions you missed; see INTERVIEW_BANK.md)
 # 1. What's the difference between except, else and finally?
+# except runs when there is any error, else runs if there is no error in try, and finalyy runs no matter if there is error or not.
 # 2. Why is a bare `except:` (catching everything) usually a bad idea?
 # 3. When should you catch an exception, and when should you let the program crash?
 # ---------------------------------------------------------------------------

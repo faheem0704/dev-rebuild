@@ -34,14 +34,18 @@ def read_csv(path):
     Dune,9.5
     """
     result = []
-    with open(path, encoding="utf-8") as file:
+    with open(path, newline="", encoding="utf-8") as file:
         for row in csv.DictReader(file):
-            result.append({"title":row["title"], "price": row["price"]})
+            result.append(row)
     return result
+
 
 def write_csv(path, rows, fieldnames):
     """Write a list of dicts to a CSV file: a header row first, then one row per dict."""
-    pass
+    with open(path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
 
 
 def sum_column(path, column):
@@ -61,7 +65,10 @@ def csv_to_json(csv_path, json_path):
     """Convert a CSV file into a JSON file (a list of dicts). Return how many rows were converted.
     Reuse your own functions above!
     """
-    pass
+    data = read_csv(csv_path)
+    save_json(json_path, data)
+    return len(data)
+
 
 
 # ---------------------------------------------------------------------------

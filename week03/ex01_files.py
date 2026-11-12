@@ -13,7 +13,10 @@ def write_lines(path, lines):
 
     write_lines("a.txt", ["hello", "world"])  ->  file contains "hello\\nworld\\n"
     """
-    pass
+    with open(path, "w", encoding="utf-8") as file:
+        for line in lines:
+            file.write(f"{line}\n")
+
 
 
 def read_lines(path):
@@ -22,14 +25,19 @@ def read_lines(path):
     (file contains "hello\\nworld\\n")  ->  ["hello", "world"]
     Hint: loop over the file object, and use .rstrip("\\n") on each line.
     """
-    pass
+    lines = []
+    with open(path, encoding="utf-8") as file:
+        for line in file:
+            lines.append(line.rstrip())
+    return lines
 
 
 def append_line(path, line):
     """Add one line to the END of the file (create the file if it doesn't exist).
     Which open() mode adds instead of overwriting?
     """
-    pass
+    with open(path, "a", encoding="utf-8") as file:
+        file.write(f"{line}\n")
 
 
 def file_stats(path):
@@ -38,7 +46,9 @@ def file_stats(path):
     "chars" = the length of the whole file's text, including "\\n" characters.
     (file contains "hi there\\nbye\\n")  ->  {"lines": 2, "words": 3, "chars": 13}
     """
-    pass
+    with open(path, encoding="utf-8") as file:
+        text = file.read()
+    return {"lines": len(text.splitlines()), "words": len(text.split()), "chars": len(text)}
 
 
 def read_or_default(path, default=""):

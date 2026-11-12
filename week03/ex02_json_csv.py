@@ -11,7 +11,8 @@ import json
 
 def save_json(path, data):
     """Save any list/dict to a JSON file, nicely indented (indent=2)."""
-    pass
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2)
 
 
 def load_json(path, default):
@@ -19,8 +20,11 @@ def load_json(path, default):
     - File missing            -> return `default`
     - File is not valid JSON  -> return `default`   (json.JSONDecodeError)
     """
-    pass
-
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return default
 
 def read_csv(path):
     """Return the rows of a CSV file (with a header row) as a list of dicts.
@@ -29,8 +33,11 @@ def read_csv(path):
     title,price            ->  [{"title": "Dune", "price": "9.5"}]
     Dune,9.5
     """
-    pass
-
+    result = []
+    with open(path, encoding="utf-8") as file:
+        for row in csv.DictReader(file):
+            result.append({"title":row["title"], "price": row["price"]})
+    return result
 
 def write_csv(path, rows, fieldnames):
     """Write a list of dicts to a CSV file: a header row first, then one row per dict."""

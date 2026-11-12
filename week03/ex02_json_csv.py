@@ -58,7 +58,16 @@ def sum_column(path, column):
     oops
     10.5
     """
-    pass
+    total = 0
+    skipped = 0
+    for row in read_csv(path):
+        try:
+            value = float(row[column])
+        except ValueError:
+            skipped += 1
+            continue
+        total += value
+    return round(total, 2), skipped
 
 
 def csv_to_json(csv_path, json_path):

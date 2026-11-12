@@ -55,7 +55,11 @@ def read_or_default(path, default=""):
     """Return the whole text of the file. If the file doesn't exist, return `default`.
     Use try/except FileNotFoundError. A missing file is a NORMAL situation here.
     """
-    pass
+    try:
+        with open(path, encoding="utf-8") as file:
+            return file.read()
+    except FileNotFoundError:
+        return default
 
 
 def find_files(folder, extension):
@@ -65,7 +69,7 @@ def find_files(folder, extension):
     find_files("data", ".csv")  ->  ["jan.csv", "mar.csv"]
     Hint: Path(folder).glob(...) and each path's .name
     """
-    pass
+    return sorted([file.name for file in Path(folder).glob("*" + extension)])
 
 
 # ---------------------------------------------------------------------------

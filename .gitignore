@@ -5,3 +5,4 @@ __pycache__/
 .env
 *.json.bak
 .vscode/
+week03/expenses.json

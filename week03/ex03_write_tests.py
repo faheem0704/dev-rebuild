@@ -23,7 +23,7 @@ def split_bill(total, people):
     split_bill(100, 4) -> 25.0
     split_bill(10, 3)  -> 3.33
     """
-    if people < 0:
+    if people < 1:
         raise ValueError("people must be at least 1")
     return round(total / people, 2)
 
@@ -38,7 +38,7 @@ def apply_discount(price, percent):
     """
     if not 0 <= percent <= 100:
         raise ValueError("percent must be between 0 and 100")
-    return round(price * percent / 100, 2)
+    return round(price - (price * percent / 100), 2)
 
 
 def count_words(text):

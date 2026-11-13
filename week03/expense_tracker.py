@@ -1,5 +1,5 @@
 import json
-from pathlib import path
+from pathlib import Path
 
 HERE = Path(__file__).parent
 EXPENSES_FILE = HERE / "expenses.json"

@@ -1,4 +1,5 @@
 import json
+import logging
 from pathlib import Path
 
 HERE = Path(__file__).parent
@@ -13,6 +14,7 @@ def load_expenses(path):
         return []
     except json.JSONDecodeError:
         print("Warning: the expense file is damaged. Starting with an empty list.")
+        logging.warning("Could not read %s, starting with an empty list", path)
         return []
 
 

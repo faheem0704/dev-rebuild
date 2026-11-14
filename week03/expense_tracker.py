@@ -1,7 +1,11 @@
-from storage import EXPENSES_FILE, load_expenses, save_expenses
+from storage import EXPENSES_FILE, load_expenses, save_expenses, HERE
 from expenses import total_by_category, biggest_expense
+import logging
 
 def main():
+    logging.basicConfig(filename=HERE / "tracker.log", level=logging.INFO,
+        format="%(asctime)s %(levelname)s %(message)s")
+    logging.info("Program started")
     expenses = load_expenses(EXPENSES_FILE)
 
     while True:
@@ -73,6 +77,7 @@ def delete_expense(expenses):
     index = number - 1
     removed = expenses.pop(index)
     print(f"Deleted: {removed['description']} ({removed['amount']:.2f})")
+    logging.info("Deleted expense: %s", removed["description"])
     print(list_expenses(expenses))
 
 def list_expenses(expenses):

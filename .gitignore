@@ -6,3 +6,4 @@ __pycache__/
 *.json.bak
 .vscode/
 week03/expenses.json
+week03/tracker.log

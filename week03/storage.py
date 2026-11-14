@@ -19,3 +19,4 @@ def load_expenses(path):
 def save_expenses(path, expenses):
     with open(path, "w", encoding="utf-8") as f:
         json.dump(expenses, f, indent=2)
+

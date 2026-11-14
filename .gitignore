@@ -7,3 +7,4 @@ __pycache__/
 .vscode/
 week03/expenses.json
 week03/tracker.log
+week03/expenses.csv

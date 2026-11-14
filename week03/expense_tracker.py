@@ -1,4 +1,4 @@
-from storage import EXPENSES_FILE, load_expenses, save_expenses, HERE
+from storage import EXPENSES_FILE, load_expenses, save_expenses, HERE, CSV_FILE, export_expenses
 from expenses import total_by_category, biggest_expense
 import logging
 
@@ -29,6 +29,14 @@ def main():
 
         elif choice == "biggest":
             print(show_biggest_expenses(expenses))
+
+        elif choice == "export":
+            if not expenses:
+                print("No expenses to export")
+            else:
+                print(export_expenses(CSV_FILE, expenses))
+
+
         elif choice == "delete":
             delete_expense(expenses)
             save_expenses(EXPENSES_FILE, expenses)
@@ -144,6 +152,7 @@ def menu():
             "3) Totals by category   "
             "4) Biggest expense   "
             "5) Delete expense   "
+            "6) Export to CSV   "
             "q) Quit "
         ).lower().strip()
 
@@ -161,6 +170,9 @@ def menu():
 
         elif text == "5":
             return "delete"
+
+        elif text == "6":
+            return "export"
 
         elif text == "q":
             return "q"
